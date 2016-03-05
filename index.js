@@ -35,6 +35,6 @@ function getSourceLink(returnedList, url, index) {
 		http;
 
 	protocol.get(url, function(res) {
-		returnedList[index] = res.fetchedUrls;
+		returnedList[index] = res;
 	});
 }
