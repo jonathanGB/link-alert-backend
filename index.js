@@ -16,8 +16,9 @@ app.get('/gettingSourceLinks', function(req, res) {
 
 		res.send({list: returnedList});
 	}
-	else
+	else {
 		res.sendStatus(404);
+	}
 });
 
 app.listen(app.get('port'));
