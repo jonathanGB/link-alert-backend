@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
-var http = require('follow-redirects').http;
-var https = require('follow-redirects').https;
+var rq = require('request-promise');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -25,12 +24,16 @@ app.get('/', function(req, res) {
 	if (req.query.list) {
 		var list = JSON.parse(req.query.list);
 		
+		var options = {
+			method: 'GET',
+			uri: list[0],
+			resolveWithFullResponse: true
+		};
 
-		http.request({
-				hostname: list[0]
-			}, function(response) {
-				res.send(response.fetchedUrls[0]);
-		});
+		rp(options)
+			.then(function(response) {
+				res.send(response);
+			})
 	}
 });
 

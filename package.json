@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "express": "~4.13.x",
-    "follow-redirects": "~0.0.x"
+    "request-promise": "~2.0.x"
   },
   "engines": {
     "node": "0.12.7"
