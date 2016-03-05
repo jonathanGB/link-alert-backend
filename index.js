@@ -34,7 +34,9 @@ function getSourceLink(returnedList, url, index) {
 		https :
 		http;
 
-	protocol.get(url, function(res) {
-		returnedList[index] = res;
+	protocol.request({
+		hostname: url
+	}, function(res) {
+		returnedList[index] = res.fetchedUrls;
 	});
 }
