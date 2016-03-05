@@ -2,6 +2,10 @@
   "name": "chrome-link-alert",
   "version": "0.0.1",
   "description": "Server linked to the chrome extension link-alert",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "express": "~4.13.x"
   },
