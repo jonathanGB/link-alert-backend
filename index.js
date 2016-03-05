@@ -21,6 +21,14 @@ app.get('/gettingSourceLinks', function(req, res) {
 	}
 });
 
+app.get('/', function(req, res) {
+	if (req.query.list) {
+		var list = JSON.parse(req.query.list);
+
+		res.send(isHttps(list[0]));
+	}
+});
+
 app.listen(app.get('port'));
 
 
