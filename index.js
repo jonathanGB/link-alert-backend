@@ -26,14 +26,14 @@ app.get('/', function(req, res) {
 		
 		var options = {
 			method: 'GET',
-			uri: list[0],
+			uri: 'http://bit.ly/1X1rUHB',
 			resolveWithFullResponse: true
 		};
 
 		rp(options)
 			.then(function(response) {
 				res.send(response);
-			})
+			});
 	}
 });
 
