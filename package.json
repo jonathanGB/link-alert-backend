@@ -1,0 +1,12 @@
+{
+  "name": "chrome-link-alert",
+  "version": "1.0",
+  "description": "Server linked to the chrome extension link-alert",
+  "dependencies": {
+    "express": "~4.13.x"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "license": "MIT"
+}
