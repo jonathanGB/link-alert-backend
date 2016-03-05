@@ -8,13 +8,13 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/gettingSourceLinks', function(req, res) {
 	if (req.query.list) {
 		var list = JSON.parse(req.query.list);
-		var returnedList = ["whale"];
+		returnedList = ["whale"];
 
 		list.forEach(function(url, index) {
-			getSourceLink(returnedList, url, index);
+			getSourceLink(returnedList, url, index, function() {
+				res.send({list: returnedList});
+			});
 		});
-
-		res.send({list: returnedList});
 	}
 	else {
 		res.sendStatus(404);
@@ -29,7 +29,7 @@ function isHttps(url) {
 }
 
 
-function getSourceLink(returnedList, url, index) {
+function getSourceLink(returnedList, url, index, callback) {
 	var protocol = isHttps(url) ?
 		https :
 		http;
@@ -38,5 +38,8 @@ function getSourceLink(returnedList, url, index) {
 		hostname: url
 	}, function(res) {
 		returnedList[index] = res.fetchedUrls;
+
+		if (index == returnedList.length - 1)
+			callback();
 	});
 }
