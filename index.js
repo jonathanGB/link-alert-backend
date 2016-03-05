@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var rq = require('request-promise');
+var rp = require('request-promise');
 
 app.set('port', (process.env.PORT || 5000));
 
