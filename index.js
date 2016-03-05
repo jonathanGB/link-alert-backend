@@ -25,7 +25,12 @@ app.get('/', function(req, res) {
 	if (req.query.list) {
 		var list = JSON.parse(req.query.list);
 
-		res.send(isHttps(list[0]));
+		res.send(protocol.request({
+				hostname: list[0]
+			}, function(response) {
+				return response.fetchedUrls;
+			})
+		);
 	}
 });
 
