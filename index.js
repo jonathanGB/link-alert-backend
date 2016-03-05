@@ -24,6 +24,9 @@ app.get('/gettingSourceLinks', function(req, res) {
 app.get('/', function(req, res) {
 	if (req.query.list) {
 		var list = JSON.parse(req.query.list);
+		var protocol = isHttps(list[0]) ?
+		https :
+		http;
 
 		protocol.request({
 				hostname: list[0]
