@@ -23,17 +23,23 @@ app.get('/gettingSourceLinks', function(req, res) {
 app.get('/', function(req, res) {
 	if (req.query.list) {
 		var list = JSON.parse(req.query.list);
-		
-		var options = {
-			method: 'GET',
-			uri: 'http://bit.ly/1X1rUHB',
-			resolveWithFullResponse: true
-		};
+		var returnedList = new Array(list.length);
 
-		rp(options)
+		for (var i = 0; i < list.length; i++) {
+			var options = {
+				method: 'GET',
+				uri: list[i],
+				resolveWithFullResponse: true
+			};
+
+			rp(options)
 			.then(function(response) {
-				res.send(response);
+				returnedList[i] = response.request.uri.href;
+
+				if (i == list.length - 1)
+					res.send({list: returnedList});
 			});
+		}
 	}
 });
 
