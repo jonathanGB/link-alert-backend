@@ -22,7 +22,7 @@ app.get('/gettingSourceLinks', function(req, res) {
 
 app.get('/', function(req, res) {
 	if (req.query.list) {
-		var list = (JSON.parse(req.query.list)).list;
+		var list = JSON.parse(req.query.list);
 		var returnedList = new Array(list.length);
 
 		getSource(list, returnedList, 0, res);
