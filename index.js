@@ -7,27 +7,14 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/gettingSourceLinks', function(req, res) {
 	if (req.query.list) {
 		var list = JSON.parse(req.query.list);
-		returnedList = ["whale"];
-
-		list.forEach(function(url, index) {
-			getSourceLink(returnedList, url, index, function() {
-				res.send({list: returnedList});
-			});
-		});
-	}
-	else {
-		res.sendStatus(404);
-	}
-});
-
-app.get('/', function(req, res) {
-	if (req.query.list) {
-		var list = JSON.parse(req.query.list);
 		var returnedList = new Array(list.length);
 
 		getSource(list, returnedList, 0, res);
+	} else {
+		res.send(404);
 	}
 });
+
 
 function getSource(list, returnedList, index, res) {
 	var options = {
