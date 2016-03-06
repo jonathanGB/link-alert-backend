@@ -43,7 +43,7 @@ function getSource(list, returnedList, index, res) {
 		if (index == list.length - 1)
 			res.send({list: returnedList});
 		else
-			getSource(index+1);
+			getSource(list, returnedList, index + 1, res);
 	});
 }
 
