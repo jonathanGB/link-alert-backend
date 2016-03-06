@@ -23,6 +23,8 @@ function getSource(list, returnedList, index, res) {
 		resolveWithFullResponse: true
 	};
 
+	options.uri.replace(/^\/\/\/, 'http://');
+
 	rp(options)
 	.then(function(response) {
 		returnedList[index] = response.request.uri.href;
