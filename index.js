@@ -23,7 +23,7 @@ function getSource(list, returnedList, index, res) {
 		resolveWithFullResponse: true
 	};
 
-	options.uri.replace(/^\/\//, 'http://');
+	options.uri = options.uri.replace(/^\/\//, 'http://');
 
 	rp(options)
 	.then(function(response) {
